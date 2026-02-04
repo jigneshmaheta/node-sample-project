@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-app-metrics
+  namespace: staging
+  labels:
+    app: node-app
+spec:
+  selector:
+    app: node-app
+  ports:
+    - name: metrics
+      port: 3000
+      targetPort: 3000
+  type: ClusterIP
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: node-app-monitor
+  namespace: staging
+  labels:
+    release: prometheus  # This is important!
+spec:
+  selector:
+    matchLabels:
+      app: node-app
+  endpoints:
+    - port: metrics
+      interval: 30s
+      path: /metrics

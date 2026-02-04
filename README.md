@@ -204,6 +204,7 @@ This Dockerfile follows best practices such as:
 
 This setup simulates a real-world DevOps staging environment.
 
+Prometheus and grafana deployed on monitoring namespace 
 Monitoring: kubectl port-forward -n monitoring svc/prometheus-server 9090:80
 
 ## Author

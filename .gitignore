@@ -1,0 +1,25 @@
+# GitHub Actions Runner - NEVER COMMIT
+actions-runner/
+_work/
+*.tar.gz
+
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Lock files (optional - keep package-lock.json)
+# package-lock.json

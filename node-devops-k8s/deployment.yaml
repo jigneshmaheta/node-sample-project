@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app
+  namespace: staging
+  labels:
+    app: node-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node-app
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+      - name: node-devops
+        image: jigneshdevops24/node-devops:v1
+        imagePullPolicy: always
+        ports:
+        - containerPort: 3000
+        envFrom:
+        - secretRef:
+            name: node-app-secrets

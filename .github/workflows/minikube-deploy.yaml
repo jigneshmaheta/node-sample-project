@@ -45,7 +45,7 @@ jobs:
           kubectl rollout restart deployment/node-app -n staging
           kubectl rollout status deployment/node-app -n staging --timeout=300s
 
-      - name: Verify Deployment
+      - name: Verify Deployment 
         run: |
           echo "=== Pods Status ==="
           kubectl get pods -n staging
